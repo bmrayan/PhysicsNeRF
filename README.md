@@ -25,58 +25,34 @@ These priors restrict the solution space to physically plausible reconstructions
 
 ---
 
-## Results
+## Results Summary
 
-### Static Scene Performance (8 input views)
+| Object | Train PSNR | Test PSNR | Gap (dB) |
+|--------|-------------|------------|----------|
+| Chair | 23.2 | 18.5 | 4.7 |
+| Lego | 21.7 | 15.0 | 6.7 |
+| Drums | 19.2 | 12.0 | 7.2 |
+| **Average** | **21.4** | **15.2** | **6.2** |
 
-| Method         | Lego (PSNR/SSIM) | Chair (PSNR/SSIM) | Drums (PSNR/SSIM) |
-|:--------------:|:---------------:|:-----------------:|:-----------------:|
-| NeRF           |  9.7 / 0.53     | 21.1 / 0.86       | 17.5 / 0.77       |
-| RegNeRF        | 19.1 / 0.73     | 20.9 / 0.83       | 18.6 / 0.72       |
-| DietNeRF       | 23.9 / 0.86     | 24.6 / 0.90       | 20.0 / 0.84       |
-| **PhysicsNeRF**| **30.0 / 0.91** | **31.0 / 0.96**   | **28.4 / 0.93**   |
+## Method Overview
 
-### Dynamic Scene Performance
+### Architecture
+- Dual-scale coordinate processing (1× and 2×)
+- D=7 layers, W=192 dimensions
+- Moderate dropout (0.25) for regularization
+- LayerNorm for training stability
 
-| Dataset         | 10k iters | 50k iters | 200k iters |
-|-----------------|-----------|-----------|------------|
-| BouncingBalls   | 22.5/0.90 | 30.4/0.97 | 34.0/0.98  |
-| JumpingJacks    | 29.8/0.96 | 33.5/0.98 | 37.0/0.98  |
+### Physics Constraints
+1. **Depth Ranking**: Monocular depth consistency using MiDaS
+2. **RegNeRF Consistency**: Ray perturbation regularization  
+3. **Sparsity**: Realistic density distributions
+4. **Cross-View**: Multi-view geometric coherence
 
-> PhysicsNeRF outperforms prior methods, especially on challenging objects with thin structures and dynamic scenes, demonstrating the effectiveness of physics-based constraints[8].
+### Progressive Training
+- Phase 1 (0-5k): α=0.008 (gentle start)
+- Phase 2 (5k-15k): α=0.025 (light regularization)
+- Phase 3 (15k+): α=0.08 (full constraints)
 
----
-
-## Method
-
-### Physics-Guided Priors
-
-- **Depth Ranking:** Uses MiDaS monocular depth to enforce ordinal relationships between pixel pairs, promoting physically consistent depth without requiring ground-truth.
-- **Frequency-Aware Regularization:** Applies a discrete wavelet transform (DWT) to prioritize low-frequency (coarse) image structure before high-frequency details.
-- **Semantic Consistency:** Enforces similarity in CLIP embedding space between rendered and ground-truth images, preserving object identity and semantics.
-
-### Training Objective
-
-The total loss combines RGB reconstruction with weighted physics priors:
-
-\[
-\mathcal{L} = \mathcal{L}_{\text{rgb}} + \lambda_d \mathcal{L}_{\text{depth}} + \lambda_w \mathcal{L}_{\text{dwt}} + \lambda_s \mathcal{L}_{\text{sem}}
-\]
-
-where recommended weights are \( \lambda_d = 0.05\text{–}0.2 \), \( \lambda_w = 0.1\text{–}0.5 \), \( \lambda_s = 0.01\text{–}0.1 \)[8].
-
-### Progressive Regularization
-
-Constraints are introduced in phases:
-- **Phase 1 (0–5k iters):** Gentle initialization (\(\alpha=0.008\))
-- **Phase 2 (5k–15k iters):** Light regularization (\(\alpha=0.025\))
-- **Phase 3 (15k+ iters):** Full physics constraints (\(\alpha=0.08\))[1].
-
----
-
-## Generalization
-
-PhysicsNeRF achieves excellent training performance, but a known challenge is the gap between training and test views, especially for dynamic scenes. This reflects the fundamental difficulty of sparse-view 3D reconstruction. Ongoing work aims to further improve generalization through additional physics-based constraints[8].
 
 ---
 
