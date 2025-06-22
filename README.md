@@ -1,4 +1,4 @@
-# PhysicsNeRF: Physics-Guided Neural Radiance Fields for Plausible 3D Reconstruction from Sparse Views
+# (REPO NOT FINISHED, COMEBACK IN A FEW DAYS) PhysicsNeRF: Physics-Guided Neural Radiance Fields for Plausible 3D Reconstruction from Sparse Views
 
 **PhysicsNeRF** is a novel framework for physically consistent 3D reconstruction from sparse views, extending Neural Radiance Fields (NeRF) with physics-guided priors. It is designed for scenarios with only 8 fixed camera views and achieves state-of-the-art results on both static and dynamic scenes.
 
