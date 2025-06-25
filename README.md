@@ -3,7 +3,7 @@
 > **Disclaimer:**  
 > PhysicsNeRF is currently under active development. This repository provides the general structure of the codebase and selected implementation components. The complete, fully optimized codebase will be made available upon the official release of the full research paper. Thank you for your patience and interest in our work.
 
-**Mohamed Rayan Barhdadi¹, Hasan Kurban², Hussein Alnuweiri²**
+**[Mohamed Rayan Barhdadi](https://bmrayan.github.io/)¹, [Hasan Kurban](https://www.hasankurban.com/)², [Hussein Alnuweiri](https://www.qatar.tamu.edu/academics/ecen/faculty-and-staff/dr.-hussein-alnuweiri)²**
 
 ¹Department of Electrical and Computer Engineering, Texas A&M University, Doha, Qatar  
 ²College of Science and Engineering, Hamad Bin Khalifa University, Doha, Qatar
