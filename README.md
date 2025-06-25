@@ -11,6 +11,7 @@
 *Corresponding author: rayan.barhdadi@tamu.edu*
 
 **Accepted at ICML 2025 Workshop: Building Physically Plausible World Models**
+**arXiv:** [arXiv:2505.23481](https://arxiv.org/abs/2505.23481)
 
 ## TL;DR - Abstract
 
@@ -109,13 +110,17 @@ python evaluate.py --checkpoint checkpoints/best_model.pt --config configs/lego_
 
 ## Citation
 
+If you find this work useful in your research, please consider citing:
+
+```
 @article{barhdadi2025physicsnerf,
 title={PhysicsNeRF: Physics-Guided 3D Reconstruction from Sparse Views},
 author={Barhdadi, Mohamed Rayan and Kurban, Hasan and Alnuweiri, Hussein},
-journal={ICML 2025 Workshop on Building Physically Plausible World Models},
-year={2025}
+journal={arXiv preprint arXiv:2505.23481},
+year={2025},
+note={\url{https://arxiv.org/abs/2505.23481}}
 }
-
+```
 
 ## Acknowledgments
 
