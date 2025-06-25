@@ -16,7 +16,7 @@
 
 We present PhysicsNeRF, a novel approach for physically consistent 3D reconstruction from sparse views by augmenting Neural Radiance Fields with physical priors. Our method integrates four complementary physics-based constraints: depth ranking supervision, RegNeRF consistency regularization, sparsity constraints, and cross-view consistency through a carefully designed 0.67M parameter architecture.
 
-![PhysicsNeRF Architecture](PhysicsNeRF_Arch.png)
+![PhysicsNeRF Architecture](figures/PhysicsNeRF_Arch.png)
 *Figure 1: PhysicsNeRF architecture and physics-guided constraints overview.*
 
 ## Key Features
