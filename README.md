@@ -12,9 +12,12 @@
 
 **Accepted at ICML 2025 Workshop: Building Physically Plausible World Models**
 
-## Abstract
+## TL;DR - Abstract
 
 We present PhysicsNeRF, a novel approach for physically consistent 3D reconstruction from sparse views by augmenting Neural Radiance Fields with physical priors. Our method integrates four complementary physics-based constraints: depth ranking supervision, RegNeRF consistency regularization, sparsity constraints, and cross-view consistency through a carefully designed 0.67M parameter architecture.
+
+![PhysicsNeRF Architecture](PhysicsNeRF_Arch.png)
+*Figure 1: PhysicsNeRF architecture and physics-guided constraints overview.*
 
 ## Key Features
 
@@ -65,7 +68,7 @@ Install dependencies
 pip install -r requirements.txt
 
 Download NeRF synthetic data
-wget https://drive.google.com/uc?id=18JxhpWD-4ZmuFKLzKlAw-w5PpzZxXOcG
+wget [https://drive.google.com/uc?id=18JxhpWD-4ZmuFKLzKlAw-w5PpzZxXOcG](https://drive.google.com/drive/folders/1cK3UDIJqKAAm7zyrxRYVFJ0BRMgrwhh4)
 unzip nerf_synthetic.zip -d data/
 
 ## Quick Start
